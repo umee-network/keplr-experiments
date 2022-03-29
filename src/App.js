@@ -20,8 +20,6 @@ function App() {
       const msg = {
         type: "cosmos-sdk/MsgSend",
         value: {
-          account_number: account.account_number,
-          sequence: account.sequence,
           from_address: myAddr,
           to_address: "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
           amount: [
@@ -36,6 +34,8 @@ function App() {
         "internal-betanet-1",
         myAddr,
         {
+          account_number: account.account_number,
+          sequence: account.sequence,
           chain_id: "internal-betanet-1",
           fee: { gas: "200000uumee" },
           msgs: [msg],
@@ -58,7 +58,7 @@ function App() {
         "https://rpc.resistability.internal-betanet-1.network.umee.cc"
       );
       const res = await broadcaster.broadcastTx(
-        Uint8Array.from(TxRaw.encode(signedTx).finish())
+        TxRaw.encode(signedTx).finish()
       );
       console.log("starport res", res);
     },
