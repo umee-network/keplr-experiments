@@ -1,4 +1,7 @@
-import logo from "./logo.svg";
+import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
+import { StargateClient } from "@cosmjs/stargate";
+import { makeStdTx } from "@cosmjs/amino";
+
 import "./App.css";
 
 function App() {
@@ -28,14 +31,25 @@ function App() {
         }
       );
       // FIXME send with keplr
-      console.log("signed", signedTx);
-      const res = await window.keplr.sendTx(
-        "umee-1",
-        makeStdTx(signedTx),
-        "async"
+      try {
+        console.log("signed", signedTx);
+        const res = await window.keplr.sendTx(
+          "umee-1",
+          makeStdTx(signedTx),
+          "async"
+        );
+        console.log("keplr res", res);
+      } catch (e) {
+        console.error("keplr error", e);
+      }
+      // try sending with startport
+      const broadcaster = await StargateClient.connect(
+        "https://rpc.resistability.internal-betanet-1.network.umee.cc/"
       );
-      console.log("res", res);
-      // TODO try sending with startport
+      res = await broadcaster.broadcastTx(
+        Uint8Array.from(TxRaw.encode(signedTx).finish())
+      );
+      console.log("starport res", res);
     },
     signMulti = () => {
       // sign tx
@@ -64,7 +78,6 @@ function App() {
       //   },
       //   signatures: [],
       // });
-
       // TODO send to startport
     };
 
@@ -96,15 +109,6 @@ function App() {
       </header>
     </div>
   );
-}
-
-function makeStdTx(content, signatures) {
-  return {
-    msg: content.msgs,
-    fee: content.fee,
-    memo: content.memo,
-    signatures: Array.isArray(signatures) ? signatures : [signatures],
-  };
 }
 
 export default App;
