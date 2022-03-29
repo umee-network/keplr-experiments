@@ -7,11 +7,13 @@ import "./App.css";
 function App() {
   const signSimple = async (e) => {
       e.preventDefault();
+      const myAddr = (await window.getOfflineSigner("internal-betanet-1").getAccounts())[0].address;
+      console.warn({myAddr});
       // sign tx
       const msg = {
         type: "cosmos-sdk/MsgSend",
         value: {
-          from_address: "umee1t57ft8wlvwvpr85u2ps6vh0xdytdyt7zcg9wg9",
+          from_address: myAddr,
           to_address: "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
           amount: [
             {
