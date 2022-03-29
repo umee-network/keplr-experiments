@@ -14,11 +14,14 @@ function App() {
       ;
       await window.keplr.enable("internal-betanet-1");
       const myAddr = (await window.getOfflineSigner("internal-betanet-1").getAccounts())[0].address;
-      console.warn({myAddr});
+      const account = await getAccount(myAddr);
+      console.warn({account, myAddr});
       // sign tx
       const msg = {
         type: "cosmos-sdk/MsgSend",
         value: {
+          account_number: account.account_number,
+          sequence: account.sequence,
           from_address: myAddr,
           to_address: "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
           amount: [
@@ -31,7 +34,7 @@ function App() {
       };
       const signedTx = await window.keplr.signAmino(
         "internal-betanet-1",
-        "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
+        myAddr,
         {
           chain_id: "internal-betanet-1",
           fee: { gas: "200000uumee" },
@@ -120,3 +123,15 @@ function App() {
 }
 
 export default App;
+
+async function getAccount(address) {
+  let resp;
+  try {
+    resp = await fetch("https://api.resistability.internal-betanet-1.network.umee.cc/cosmos/auth/v1beta1/accounts/" + address);
+  } catch (err) {
+    window.errr = err;
+    throw err
+  }
+
+  return (await resp.json()).account;
+}
