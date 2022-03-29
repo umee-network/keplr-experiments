@@ -24,10 +24,10 @@ function App() {
         },
       };
       const signedTx = await window.keplr.signAmino(
-        "umee-1",
+        "internal-betanet-1",
         "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
         {
-          chain_id: "umee-1",
+          chain_id: "internal-betanet-1",
           fee: { gas: "200000uumee" },
           msgs: [msg],
         }
@@ -46,7 +46,7 @@ function App() {
       }
       // try sending with startport
       const broadcaster = await StargateClient.connect(
-        "https://rpc.resistability.internal-betanet-1.network.umee.cc/"
+        "https://rpc.resistability.internal-betanet-1.network.umee.cc"
       );
       const res = await broadcaster.broadcastTx(
         Uint8Array.from(TxRaw.encode(signedTx).finish())
