@@ -1,4 +1,4 @@
-import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
+import { Tx } from "cosmjs-types/cosmos/tx/v1beta1/tx";
 import { StargateClient } from "@cosmjs/stargate";
 import { makeStdTx } from "@cosmjs/amino";
 import * as stargate from "@cosmjs/stargate";
@@ -60,7 +60,7 @@ function App() {
       const broadcaster = await StargateClient.connect(
         "https://rpc.resistability.internal-betanet-1.network.umee.cc"
       );
-      const res = await broadcaster.broadcastTx(TxRaw.encode(stdTx).finish());
+      const res = await broadcaster.broadcastTx(Tx.encode(stdTx).finish());
       console.log("starport res", res);
     },
     signMulti = () => {
