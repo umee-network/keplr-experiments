@@ -46,7 +46,7 @@ function App() {
       const broadcaster = await StargateClient.connect(
         "https://rpc.resistability.internal-betanet-1.network.umee.cc/"
       );
-      res = await broadcaster.broadcastTx(
+      const res = await broadcaster.broadcastTx(
         Uint8Array.from(TxRaw.encode(signedTx).finish())
       );
       console.log("starport res", res);
