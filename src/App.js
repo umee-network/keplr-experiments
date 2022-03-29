@@ -1,6 +1,7 @@
 import { TxRaw } from "cosmjs-types/cosmos/tx/v1beta1/tx";
 import { StargateClient } from "@cosmjs/stargate";
 import { makeStdTx } from "@cosmjs/amino";
+import * as stargate from "@cosmjs/stargate";
 
 import "./App.css";
 
@@ -41,12 +42,14 @@ function App() {
           msgs: [msg],
         }
       );
+      const stdTx = makeStdTx(signedTx.signed, [signedTx.signature])
+      console.log("std tx", stdTx);
       // FIXME send with keplr
       try {
         console.log("signed", signedTx);
         const res = await window.keplr.sendTx(
-          "umee-1",
-          makeStdTx(signedTx),
+          "internal-betanet-1",
+          stdTx,
           "async"
         );
         console.log("keplr res", res);
@@ -57,9 +60,7 @@ function App() {
       const broadcaster = await StargateClient.connect(
         "https://rpc.resistability.internal-betanet-1.network.umee.cc"
       );
-      const res = await broadcaster.broadcastTx(
-        TxRaw.encode(signedTx).finish()
-      );
+      const res = await broadcaster.broadcastTx(TxRaw.encode(stdTx).finish());
       console.log("starport res", res);
     },
     signMulti = () => {
