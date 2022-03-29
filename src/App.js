@@ -7,6 +7,12 @@ import "./App.css";
 function App() {
   const signSimple = async (e) => {
       e.preventDefault();
+      await fetch("/keplr.json")
+        .then(r => r.json())
+        .then(window.keplr.experimentalSuggestChain.bind(window.keplr))
+        .then(() => window.keplr.enable('internal-betanet-1'))
+      ;
+      await window.keplr.enable("internal-betanet-1");
       const myAddr = (await window.getOfflineSigner("internal-betanet-1").getAccounts())[0].address;
       console.warn({myAddr});
       // sign tx
