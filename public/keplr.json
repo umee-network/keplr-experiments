@@ -1,0 +1,48 @@
+{
+  "rpc": "https://rpc.resistability.internal-betanet-1.network.umee.cc",
+  "rest": "https://api.resistability.internal-betanet-1.network.umee.cc",
+  "chainId": "internal-betanet-1",
+  "chainName": "internal-betanet-1",
+  "bip44": {
+    "coinType": 118
+  },
+  "coinType": 118,
+  "currencies": [
+    {
+      "coinDenom": "UMEE",
+      "coinMinimalDenom": "uumee",
+      "coinDecimals": 6
+    },
+    {
+      "coinDenom": "ATOM",
+      "coinMinimalDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+      "coinDecimals": 6
+    }
+  ],
+  "feeCurrencies": [
+    {
+      "coinDenom": "UMEE",
+      "coinMinimalDenom": "uumee",
+      "coinDecimals": 6
+    }
+  ],
+  "stakeCurrency": {
+    "coinDenom": "UMEE",
+    "coinMinimalDenom": "uumee",
+    "coinDecimals": 6
+  },
+  "features": [
+    "stargate",
+    "ibc-transfer",
+    "no-legacy-stdTx"
+  ],
+  "explorerUrlToTx": "https://explorer.internal-betanet-1.network.umee.cc/internal-betanet-1/tx/{txHash}",
+  "bech32Config": {
+    "bech32PrefixAccAddr": "umee",
+    "bech32PrefixAccPub": "umeepub",
+    "bech32PrefixValAddr": "umeevaloper",
+    "bech32PrefixValPub": "umeevaloperpub",
+    "bech32PrefixConsAddr": "umeevalcons",
+    "bech32PrefixConsPub": "umeevalconspub"
+  }
+}
