@@ -1,0 +1,59 @@
+
+{
+  "rpc": "",
+  "rest": "",
+  "chainId": "umeemania-1",
+  "chainName": "UMEE Umeemania",
+  "bip44": {
+    "coinType": 118
+  },
+  "coinType": 118,
+  "currencies": [
+    {
+      "coinDenom": "ATOM",
+      "coinMinimalDenom": "ibc/27394FB092D2ECCD56123C74F36E4C1F926001CEADA9CA97EA622B25F41E5EB2",
+      "coinDecimals": 6
+    },
+    {
+      "coinDenom": "JUNO",
+      "coinMinimalDenom": "ibc/04F5F501207C3626A2C14BFEF654D51C2E0B8F7CA578AB8ED272A66FE4E48097",
+      "coinDecimals": 6
+    },
+    {
+      "coinDenom": "OSMO",
+      "coinMinimalDenom": "ibc/ED07A3391A112B175915CD8FAF43A2DA8E4790EDE12566649D0C2F97716B8518",
+      "coinDecimals": 6
+    },
+    {
+      "coinDenom": "UMEE",
+      "coinMinimalDenom": "uumee",
+      "coinDecimals": 6
+    }
+  ],
+  "feeCurrencies": [
+    {
+      "coinDenom": "UMEE",
+      "coinMinimalDenom": "uumee",
+      "coinDecimals": 6
+    }
+  ],
+  "stakeCurrency": {
+    "coinDenom": "UMEE",
+    "coinMinimalDenom": "uumee",
+    "coinDecimals": 6
+  },
+  "features": [
+    "stargate",
+    "ibc-transfer",
+    "no-legacy-stdTx"
+  ],
+  "explorerUrlToTx": "https://explorer.umeemania-1.network.umee.cc/umeemania-1/tx/{txHash}",
+  "bech32Config": {
+    "bech32PrefixAccAddr": "umee",
+    "bech32PrefixAccPub": "umeepub",
+    "bech32PrefixValAddr": "umeevaloper",
+    "bech32PrefixValPub": "umeevaloperpub",
+    "bech32PrefixConsAddr": "umeevalcons",
+    "bech32PrefixConsPub": "umeevalconspub"
+  }
+}
