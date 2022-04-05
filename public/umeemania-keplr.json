@@ -1,7 +1,7 @@
 
 {
-  "rpc": "",
-  "rest": "",
+  "rpc": "https://rpc.alley.umeemania-1.network.umee.cc",
+  "rest": "https://api.alley.umeemania-1.network.umee.cc",
   "chainId": "umeemania-1",
   "chainName": "UMEE Umeemania",
   "bip44": {
