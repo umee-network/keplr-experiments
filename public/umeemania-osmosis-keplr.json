@@ -1,0 +1,40 @@
+
+{
+  "rpc": "https://rpc.wall.osmosis-umeemania-1.network.umee.cc",
+  "rest": "https://api.wall.osmosis-umeemania-1.network.umee.cc",
+  "chainId": "osmosis-umeemania-1",
+  "chainName": "OSMO Umeemania",
+  "bip44": {
+    "coinType": 118
+  },
+  "coinType": 118,
+  "currencies": [
+    {
+      "coinDenom": "OSMO",
+      "coinMinimalDenom": "uosmo",
+      "coinDecimals": 6
+    }
+  ],
+  "feeCurrencies": [
+    {
+      "coinDenom": "OSMO",
+      "coinMinimalDenom": "uosmo",
+      "coinDecimals": 6
+    }
+  ],
+  "stakeCurrency": {
+    "coinDenom": "OSMO",
+    "coinMinimalDenom": "uosmo",
+    "coinDecimals": 6
+  },
+  "features": [ "ibc-transfer" ],
+  "explorerUrlToTx": "https://explorer.umeemania-1.network.umee.cc/osmosis-umeemania-1/tx/{txHash}",
+  "bech32Config": {
+    "bech32PrefixAccAddr": "osmo",
+    "bech32PrefixAccPub": "osmopub",
+    "bech32PrefixValAddr": "osmovaloper",
+    "bech32PrefixValPub": "osmovaloperpub",
+    "bech32PrefixConsAddr": "osmovalcons",
+    "bech32PrefixConsPub": "osmovalconspub"
+  }
+}

@@ -1,0 +1,40 @@
+
+{
+  "rpc": "https://rpc.flash.gaia-umeemania-1.network.umee.cc",
+  "rest": "https://api.flash.gaia-umeemania-1.network.umee.cc",
+  "chainId": "gaia-umeemania-1",
+  "chainName": "ATOM Umeemania",
+  "bip44": {
+    "coinType": 118
+  },
+  "coinType": 118,
+  "currencies": [
+    {
+      "coinDenom": "ATOM",
+      "coinMinimalDenom": "uatom",
+      "coinDecimals": 6
+    }
+  ],
+  "feeCurrencies": [
+    {
+      "coinDenom": "ATOM",
+      "coinMinimalDenom": "uatom",
+      "coinDecimals": 6
+    }
+  ],
+  "stakeCurrency": {
+    "coinDenom": "ATOM",
+    "coinMinimalDenom": "uatom",
+    "coinDecimals": 6
+  },
+  "features": [ "ibc-transfer" ],
+  "explorerUrlToTx": "https://explorer.umeemania-1.network.umee.cc/gaia-umeemania-1/tx/{txHash}",
+  "bech32Config": {
+    "bech32PrefixAccAddr": "cosmos",
+    "bech32PrefixAccPub": "cosmospub",
+    "bech32PrefixValAddr": "cosmosvaloper",
+    "bech32PrefixValPub": "cosmosvaloperpub",
+    "bech32PrefixConsAddr": "cosmosvalcons",
+    "bech32PrefixConsPub": "cosmosvalconspub"
+  }
+}

@@ -42,11 +42,7 @@
     "coinMinimalDenom": "uumee",
     "coinDecimals": 6
   },
-  "features": [
-    "stargate",
-    "ibc-transfer",
-    "no-legacy-stdTx"
-  ],
+  "features": [ "ibc-transfer" ],
   "explorerUrlToTx": "https://explorer.umeemania-1.network.umee.cc/umeemania-1/tx/{txHash}",
   "bech32Config": {
     "bech32PrefixAccAddr": "umee",
