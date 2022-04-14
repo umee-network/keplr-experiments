@@ -8,20 +8,25 @@ import "./App.css";
 function App() {
   const signSimple = async (e) => {
       e.preventDefault();
+
       await fetch("/keplr.json")
         .then(r => r.json())
         .then(window.keplr.experimentalSuggestChain.bind(window.keplr))
         .then(() => window.keplr.enable('internal-betanet-1'))
       ;
       await window.keplr.enable("internal-betanet-1");
+      console.log(await window.getOfflineSigner("internal-betanet-1").getAccounts());
       const myAddr = (await window.getOfflineSigner("internal-betanet-1").getAccounts())[0].address;
+      console.log('myAddr', myAddr);
       const account = await getAccount(myAddr);
       console.warn({account, myAddr});
+      if (!account?.account_number) console.error('no account')
       // sign tx
       const msg = {
         type: "cosmos-sdk/MsgSend",
         value: {
           from_address: myAddr,
+          // from_address: "umee1t57ft8wlvwvpr85u2ps6vh0xdytdyt7zcg9wg9",
           to_address: "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
           amount: [
             {
@@ -31,12 +36,21 @@ function App() {
           ],
         },
       };
+    //  const signedTx = await window.keplr.signAmino(
+    //     "umee-1",
+    //     "umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6",
+    //     {
+    //       chain_id: "umee-1",
+    //       fee: { gas: "200000uumee" },
+    //       msgs: [msg],
+    //     }
+    //   );
       const signedTx = await window.keplr.signAmino(
         "internal-betanet-1",
         myAddr,
         {
-          account_number: account.account_number,
-          sequence: account.sequence,
+          account_number: account?.account_number,
+          sequence: account?.sequence,
           chain_id: "internal-betanet-1",
           fee: { gas: "200000uumee" },
           msgs: [msg],

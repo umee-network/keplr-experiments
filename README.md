@@ -1,6 +1,17 @@
-# Getting Started with Create React App
+# Related Umee
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```sh
+ # setup multisig
+ umeed --keyring-backend test keys add k1
+ umeed --keyring-backend test keys add k2
+ umeed --keyring-backend test keys add k1k2 --multisig-threshold=2 --multisig=k1,k2
+```
+
+```sh
+# create vesting account
+umeed tx bank send umee18xvre63yrfvxflvzw3fexp25ne08mvu3vna4vv umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6 1umee --chain-id 888 --generate-only
+umeed tx vesting create-vesting-account umee1x36cn57mr62qd9qwp3p207u3x6kjh3uzh5c7z6 100uumee 1679698063 --generate-only --from umee1t57ft8wlvwvpr85u2ps6vh0xdytdyt7zcg9wg9 --chain-id 888 --sign-mode aminojson
+```
 
 ## Available Scripts
 
